@@ -50,4 +50,29 @@ console.log(`first number for the generator ${numbers.next().value}`)
 console.log(`second number for the generator ${numbers.next().value}`)
 console.log(`third number for the generator ${numbers.next().value}`)
 
+type Log = (message: string, userId?: string) => void
+let logWithType: Log = (message, userId = 'Not signed in') => {
+    let time = new Date().toISOString()
+    console.log(time, message, userId)
+}
 
+
+type Reserve = {
+    (from: Date, to: Date, destination: string): Reservation
+    (from: Date, destination: string): Reservation
+}
+
+interface Reservation {
+    content: string
+}
+
+/*let reserve: Reserve = (from: Date,
+                        toOrDestination: Date | string,
+                        destination?: string)  => {
+    if (toOrDestination instanceof Date && destination !== undefined) {
+        // Book a one-way trip
+
+    } else if (typeof toOrDestination === 'string') {
+        // Book a round trip
+    }
+}*/
